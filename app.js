@@ -240,7 +240,75 @@ function renderResultQuestion(record, index) {
   return card;
 }
 
-function renderResults(records) {
+function renderSupplementSection(submissionId) {
+  const wrap = document.createElement("div");
+  wrap.className = "supplement-section";
+
+  const divider = document.createElement("hr");
+  divider.className = "supplement-divider";
+  wrap.appendChild(divider);
+
+  const note = document.createElement("p");
+  note.className = "supplement-note";
+  note.textContent = "No personal information has been collected. However, the following would be helpful:";
+  wrap.appendChild(note);
+
+  const ageRow = document.createElement("label");
+  ageRow.className = "supplement-field";
+  ageRow.innerHTML = `Your age <input type="number" min="0" max="120" id="supplement-age"> (years).`;
+  wrap.appendChild(ageRow);
+
+  const cityRow = document.createElement("label");
+  cityRow.className = "supplement-field";
+  cityRow.innerHTML = `Your City, Country <input type="text" id="supplement-city-country">.`;
+  wrap.appendChild(cityRow);
+
+  const saveBtn = document.createElement("button");
+  saveBtn.type = "button";
+  saveBtn.className = "supplement-save-btn";
+  saveBtn.textContent = "Save";
+  wrap.appendChild(saveBtn);
+
+  const status = document.createElement("p");
+  status.className = "supplement-status";
+  status.hidden = true;
+  wrap.appendChild(status);
+
+  saveBtn.addEventListener("click", () => {
+    const age = document.getElementById("supplement-age").value.trim();
+    const cityCountry = document.getElementById("supplement-city-country").value.trim();
+
+    if (!age && !cityCountry) return;
+
+    saveBtn.disabled = true;
+    saveBtn.textContent = "Saving…";
+
+    fetch(APPS_SCRIPT_URL, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({ submissionId, supplement: { age, cityCountry } })
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error(`Request failed: ${response.status}`);
+        status.textContent = "Thanks — saved!";
+        status.className = "supplement-status supplement-status-ok";
+        status.hidden = false;
+        saveBtn.textContent = "Save";
+        saveBtn.disabled = false;
+      })
+      .catch(() => {
+        status.textContent = "There was a problem saving this — please try again.";
+        status.className = "supplement-status supplement-status-error";
+        status.hidden = false;
+        saveBtn.textContent = "Save";
+        saveBtn.disabled = false;
+      });
+  });
+
+  return wrap;
+}
+
+function renderResults(records, submissionId) {
   const bankRecords = records.slice(1); // exclude the static question
   const correctCount = bankRecords.filter((r) => r.isCorrect === true).length;
   const total = bankRecords.length;
@@ -268,6 +336,8 @@ function renderResults(records) {
   scoreCard.appendChild(scoreMsg);
 
   container.appendChild(scoreCard);
+
+  container.appendChild(renderSupplementSection(submissionId));
 
   const footer = document.createElement("div");
   footer.className = "results-footer";
@@ -331,8 +401,9 @@ document.addEventListener("DOMContentLoaded", () => {
       isCorrect
     }));
 
+    const submissionId = uuid();
     const payload = {
-      submissionId: uuid(),
+      submissionId,
       urlParams: getUrlParams(),
       entries
     };
@@ -342,7 +413,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Results are computed entirely client-side, so show them immediately rather than
     // waiting on the (often slow) round-trip to the Google Apps Script backend. The save
     // to the sheet happens in the background; a quiet notice appears only if it fails.
-    renderResults(gradedRecords);
+    renderResults(gradedRecords, submissionId);
     form.hidden = true;
     document.getElementById("thank-you").hidden = false;
 

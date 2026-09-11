@@ -393,5 +393,44 @@ const QUESTION_BANK = [
     options: ["Sought out the local rabbi", "Went straight into Bethlehem", "Reported to the chief shepherd", "Went to sleep", "Fled the area"],
     correctAnswer: "Went straight into Bethlehem",
     reference: ""
+  },
+  {
+    id: "q44",
+    type: "multiple-choice",
+    question: "(Select one) Jesus was born under which covenant?",
+    options: ["Noahic", "New", "Mayflower", "Mosaic", "Messianic"],
+    correctAnswer: "Mosaic",
+    reference: "Luke 2:22"
+  },
+  {
+    id: "q45",
+    type: "multiple-choice",
+    question: "(Select one) How many dreams in total are in the Christmas Story?",
+    options: ["Three", "Four", "Five", "Six", "Seven"],
+    correctAnswer: "Five",
+    reference: "Matthew 1:20-23; 2:12; 2:13; 2:19–20; 2:2"
+  },
+  {
+    id: "q46",
+    type: "checkbox",
+    question: "(Select all that apply) What was Joseph instructed to do during the first of his dreams?",
+    questionHtml: "(Select <em>all </em>that apply) What was Joseph instructed to do during the first of his dreams?",
+    options: [
+      "Marry Mary",
+      "Divorce Mary",
+      "Go to Jerusalem",
+      "Name the baby",
+      "Pray for faith"
+    ],
+    correctAnswers: ["Marry Mary", "Name the baby"],
+    reference: "Matthew 1:20-21"
+  },
+  {
+    id: "q47",
+    type: "multiple-choice",
+    question: "(Select one) Joseph was in the land of ________ when he had his final dream.",
+    options: ["Syria", "Nabatea", "Egypt", "Israel", "Babylon"],
+    correctAnswer: "Israel",
+    reference: "Matthew 2:21-22"
   }
 ];

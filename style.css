@@ -278,3 +278,78 @@ input[type="text"] {
 .results-footer .copyright-line {
   font-size: 0.8rem;
 }
+
+.supplement-section {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.supplement-divider {
+  width: 220px;
+  margin: 0 auto 20px;
+  border: none;
+  border-top: 3px solid var(--text);
+}
+
+.supplement-note {
+  color: var(--muted);
+  font-size: 1.05rem;
+  margin: 0 0 16px;
+}
+
+.supplement-field {
+  display: block;
+  margin: 0 0 12px;
+  color: var(--text);
+  font-size: 1.15rem;
+}
+
+.supplement-field input {
+  margin: 0 8px;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 1.1rem;
+}
+
+.supplement-field input[type="number"] {
+  width: 70px;
+}
+
+.supplement-field input[type="text"] {
+  width: 200px;
+}
+
+.supplement-save-btn {
+  padding: 8px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--green);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.supplement-save-btn:hover {
+  background: #144a2e;
+}
+
+.supplement-save-btn:disabled {
+  background: #9bb5a6;
+  cursor: not-allowed;
+}
+
+.supplement-status {
+  margin: 10px 0 0;
+  font-size: 0.9rem;
+}
+
+.supplement-status-ok {
+  color: var(--green);
+}
+
+.supplement-status-error {
+  color: var(--red);
+}
