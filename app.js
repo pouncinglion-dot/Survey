@@ -34,9 +34,15 @@ function shuffle(array) {
   return a;
 }
 
+// These "catch-all" options always stay last in the displayed list, rather than
+// being shuffled in among the substantive answer choices.
+const PIN_LAST_OPTIONS = ["None of the above", "Scripture doesn't say"];
+
 function shuffleQuestionOptions(q) {
   if (!q.options || q.type === "scale") return q;
-  return { ...q, options: shuffle(q.options) };
+  const pinned = q.options.filter((opt) => PIN_LAST_OPTIONS.includes(opt));
+  const rest = q.options.filter((opt) => !PIN_LAST_OPTIONS.includes(opt));
+  return { ...q, options: [...shuffle(rest), ...pinned] };
 }
 
 function pickQuestionsForThisVisit() {
@@ -255,12 +261,12 @@ function renderSupplementSection(submissionId) {
 
   const ageRow = document.createElement("label");
   ageRow.className = "supplement-field";
-  ageRow.innerHTML = `Your age <input type="number" min="0" max="120" id="supplement-age"> (years).`;
+  ageRow.innerHTML = `Your age (years) <input type="number" min="0" max="120" id="supplement-age">`;
   wrap.appendChild(ageRow);
 
   const cityRow = document.createElement("label");
   cityRow.className = "supplement-field";
-  cityRow.innerHTML = `Your City, Country <input type="text" id="supplement-city-country">.`;
+  cityRow.innerHTML = `Your City, Country <input type="text" id="supplement-city-country">`;
   wrap.appendChild(cityRow);
 
   const saveBtn = document.createElement("button");
@@ -293,8 +299,11 @@ function renderSupplementSection(submissionId) {
         status.textContent = "Thanks — saved!";
         status.className = "supplement-status supplement-status-ok";
         status.hidden = false;
-        saveBtn.textContent = "Save";
-        saveBtn.disabled = false;
+        saveBtn.hidden = true;
+        ageRow.classList.add("supplement-field-saved");
+        cityRow.classList.add("supplement-field-saved");
+        document.getElementById("supplement-age").disabled = true;
+        document.getElementById("supplement-city-country").disabled = true;
       })
       .catch(() => {
         status.textContent = "There was a problem saving this — please try again.";

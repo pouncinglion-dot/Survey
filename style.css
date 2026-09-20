@@ -302,6 +302,7 @@ input[type="text"] {
   margin: 0 0 12px;
   color: var(--text);
   font-size: 1.15rem;
+  text-align: right;
 }
 
 .supplement-field input {
@@ -318,6 +319,16 @@ input[type="text"] {
 
 .supplement-field input[type="text"] {
   width: 200px;
+}
+
+.supplement-field.supplement-field-saved {
+  color: var(--muted);
+}
+
+.supplement-field.supplement-field-saved input {
+  color: var(--muted);
+  background: #ece8dd;
+  cursor: not-allowed;
 }
 
 .supplement-save-btn {
