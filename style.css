@@ -302,7 +302,7 @@ input[type="text"] {
   margin: 0 0 12px;
   color: var(--text);
   font-size: 1.15rem;
-  text-align: right;
+  text-align: left;
 }
 
 .supplement-field input {
@@ -318,7 +318,9 @@ input[type="text"] {
 }
 
 .supplement-field input[type="text"] {
-  width: 200px;
+  width: 90px;
+  max-width: 100%;
+  transition: width 0.1s ease;
 }
 
 .supplement-field.supplement-field-saved {

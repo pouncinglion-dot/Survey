@@ -246,6 +246,22 @@ function renderResultQuestion(record, index) {
   return card;
 }
 
+function autoGrowInput(input, minWidth, extraPadding) {
+  const measurer = document.createElement("span");
+  measurer.style.position = "absolute";
+  measurer.style.visibility = "hidden";
+  measurer.style.whiteSpace = "pre";
+  measurer.style.font = getComputedStyle(input).font;
+  document.body.appendChild(measurer);
+
+  const resize = () => {
+    measurer.textContent = input.value || input.placeholder || "";
+    input.style.width = Math.max(minWidth, measurer.offsetWidth + extraPadding) + "px";
+  };
+  input.addEventListener("input", resize);
+  resize();
+}
+
 function renderSupplementSection(submissionId) {
   const wrap = document.createElement("div");
   wrap.className = "supplement-section";
@@ -268,6 +284,7 @@ function renderSupplementSection(submissionId) {
   cityRow.className = "supplement-field";
   cityRow.innerHTML = `Your City, Country <input type="text" id="supplement-city-country">`;
   wrap.appendChild(cityRow);
+  autoGrowInput(cityRow.querySelector("input"), 90, 44);
 
   const saveBtn = document.createElement("button");
   saveBtn.type = "button";
