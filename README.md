@@ -69,6 +69,20 @@ writes headers to a brand-new empty sheet). Either manually insert `Group`,
 or rename/delete the old tab and let the script recreate it on the next
 submission.
 
+## Group scorecard pages (e.g. Lincoln Berean Church)
+
+`lbc.html` is a live scorecard for responses tagged `Group=LBC`. It fetches
+aggregate stats from the Apps Script (`GET ?group=LBC`) each time it's
+opened — totals, score spread, per-question results — never individual
+answers, free text, ages or locations. For another group, copy `lbc.html`
+and change the `data-group`, `data-name` and `data-quiz-query` attributes
+on `<body>` (and the title/heading).
+
+Share the quiz with that group using
+`?Group=LBC&City-Country=Lincoln-USA`, and the scorecard link is just
+`.../lbc.html`. After pasting the updated `Code.gs`, redeploy the Apps
+Script (new version) or the scorecard will show "couldn't load results".
+
 ## Growing the question bank past 37
 
 Open [`questions.js`](questions.js) and add more objects to the

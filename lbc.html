@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lincoln Berean Church — Christmas Story Scorecard</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="scorecard.css">
+</head>
+<body data-group="LBC" data-name="Lincoln Berean Church" data-quiz-query="Group=LBC&amp;City-Country=Lincoln-USA">
+  <div class="hero">
+    <img src="nativity-header.jpg" alt="The three wise men traveling by camel across the desert toward the star over the manger in Bethlehem" class="hero-img">
+  </div>
+  <main class="wrap">
+    <div class="header-decoration">
+      <div class="tree-bg" aria-hidden="true">🎄</div>
+      <header class="page-header">
+        <h1>Lincoln Berean Church</h1>
+        <p class="subtitle">Christmas Story scorecard</p>
+      </header>
+    </div>
+
+    <div id="sc-status" class="sc-status" role="status">Loading results…</div>
+
+    <div id="sc-content" hidden>
+      <div id="sc-early-note" class="sc-note" hidden></div>
+
+      <section class="sc-kpis" id="sc-kpis"></section>
+
+      <section class="sc-section">
+        <h2>How scores spread</h2>
+        <div class="sc-card"><div class="sc-rows" id="sc-scores"></div></div>
+      </section>
+
+      <section class="sc-section">
+        <h2>Confidence vs. score</h2>
+        <div class="sc-card">
+          <p class="sc-hint">Average score, grouped by how people rated their own Bible knowledge.</p>
+          <div class="sc-rows" id="sc-selfratings"></div>
+        </div>
+      </section>
+
+      <section class="sc-section">
+        <h2>Question by question</h2>
+        <p class="sc-hint">Trickiest first. Each shows the answer and where to find it in Scripture.</p>
+        <div id="sc-questions"></div>
+      </section>
+    </div>
+
+    <footer class="sc-footer">
+      <p id="sc-updated"></p>
+      <p><a id="sc-quiz-link" href="index.html">Take the quiz →</a></p>
+      <p class="copyright-line">© 2026 Brian A. Edwards. All rights reserved.</p>
+    </footer>
+  </main>
+
+  <script src="questions.js"></script>
+  <script src="scorecard.js"></script>
+</body>
+</html>
