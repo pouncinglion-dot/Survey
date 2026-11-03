@@ -26,7 +26,7 @@ const QUESTION_BANK = [
   {
     id: "q2",
     type: "short-text",
-    question: "(Short answer) Where in the Bible so we find the story of Jesus’ birth? (Give book and chapter)",
+    question: "(Short answer) Where in the Bible do we find the story of Jesus’ birth? (Give book and chapter)",
     acceptedAnswers: [
       "Matthew 1-2", "Matt 1-2", "Matt. 1-2", "Matthew 1 and 2", "Matt 1 and 2", "Matt. 1 and 2", "Matthew 1 & 2", "Matt 1 & 2", "Matt. 1 & 2", "Matthew 2", "Matt 2", "Matt. 2", "Luke 1-2", "Lk 1-2", "Lk. 1-2", "Luke 1 and 2", "Lk 1 and 2", "Lk. 1 and 2", "Luke 1 & 2", "Lk 1 & 2", "Lk. 1 & 2", "Matthew 2 and Luke 1-2", "Matt 2 and Lk 1-2"
     ],
@@ -154,7 +154,7 @@ const QUESTION_BANK = [
       "Myrrh"
     ],
     correctAnswers: ["Gold", "Myrrh"],
-    reference: "Luke 2:11"
+    reference: "Matthew 2:11"
   },
   {
     id: "q17",
