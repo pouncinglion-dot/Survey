@@ -193,7 +193,7 @@ const QUESTION_BANK = [
     question: "(Select one) The shepherds went to see Jesus in Bethlehem because they …",
     options: ["Discovered a prophecy", "Heard an angel", "Followed a star", "Got news from a fellow shepherd", "None of the above"],
     correctAnswer: "Followed a star",
-    reference: "Luke 2:2, 9"
+    reference: "Luke 2:9-18"
   },
   {
     id: "q21",
